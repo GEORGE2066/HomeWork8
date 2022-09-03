@@ -16,9 +16,9 @@ public class Main {
 
     /*ВТОРОЙ ТАСК*/
 
-    public static void printVersionApp(String clientOS, int yearProduct) {
+    private static void printVersionApp(String clientOS, int yearProduct) {
         int currentYear = LocalDate.now().getYear();
-        if (yearProduct > 2015 && yearProduct < currentYear) {
+        if (yearProduct >= 2015 && yearProduct < currentYear) {
             System.out.println("Приложение будет работать корректно");
         } else if (yearProduct < 2015) {
             if (clientOS == "Android") {
@@ -38,7 +38,7 @@ public class Main {
 
     /*ТРЕТИЙ ТАСК*/
 
-    public static void printDelivery(int distance) {
+    private static void printDelivery(int distance) {
         if (distance > 0 && distance < 20) {
             System.out.println("Доставка займёт сутки");
         } else if (distance >= 20 && distance < 60) {
@@ -60,10 +60,10 @@ public class Main {
         String OS = "Android";
         int yearProduct = 2016;//под второй таск
 
-        int delivery_distanse = 95;//под третий таск
+        int deliveryDistanse = 95;//под третий таск
 
         printLeapYear(year);
         printVersionApp(OS, yearProduct);
-        printDelivery(delivery_distanse);
+        printDelivery(deliveryDistanse);
     }
 }
