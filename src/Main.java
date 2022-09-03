@@ -1,46 +1,53 @@
+import java.time.LocalDate;
+
 public class Main {
 
     /*ПЕРВЫЙ ТАСК*/
 
-    public static int leapYear(int year) {
-        if (year % 4 == 0) {
-            System.out.println(year + " год является високосным.");
+    private static void printLeapYear(int year) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            System.out.println(year + " год является високосным");
         } else {
-            System.out.println(year + " год не является високосным.");
+            System.out.println(year + " год не является високосным");
         }
-        return year;
     }
 
 
 
     /*ВТОРОЙ ТАСК*/
 
-    public static <clientOS> int versionApplication(int period_production, int clientOS) {
-        if (period_production >= 2015) {
-            System.out.println("Приложение работает корректно.");
-        } else if (period_production < 2015) {
-            if (clientOS == 1) {
-                System.out.println("Установите облегчённую версию приложения для Android по ссылке:");
-            } else {
-                System.out.println("Установите облегчённую версию приложения для iOS по ссылке:");
+    public static void printVersionApp(String clientOS, int yearProduct) {
+        int currentYear = LocalDate.now().getYear();
+        if (yearProduct > 2015 && yearProduct < currentYear) {
+            System.out.println("Приложение будет работать корректно");
+        } else if (yearProduct < 2015) {
+            if (clientOS == "Android") {
+                System.out.println("Установите облегчённую версию для Andoid");
+            } else if (clientOS == "iOS") {
+                System.out.println("Установите облегчённую версию для iOS");
             }
         }
-        return period_production;
+        /*
+            1). "Если телефон произведен с 2015 по нынешний год, то приложение будет работать корректно."
+            2). "Если устройство старше текущего года, предложите ему установить lite-версию (облегченную версию)."
+            Где правда?
+         */
     }
 
 
 
     /*ТРЕТИЙ ТАСК*/
 
-    public static int deliveryDistance(int delivery_distance) {
-        if (delivery_distance > 60 && delivery_distance <= 100) {
-            System.out.println("Потребуется дней: 3 дня." );
-        } else if (delivery_distance > 20 && delivery_distance <= 60) {
-            System.out.println("Потребуется дней: 2 дня.");
-        } else if (delivery_distance <= 20) {
-            System.out.println("Потребуется дней: 1 день.");
+    public static void printDelivery(int distance) {
+        if (distance > 0 && distance < 20) {
+            System.out.println("Доставка займёт сутки");
+        } else if (distance >= 20 && distance < 60) {
+            System.out.println("Доставка займёт двое суток");
+        } else if (distance >= 60 && distance < 100) {
+            System.out.println("Доставка займёт трое суток");
+        } else {
+            System.out.println("Доставка займёт четверо суток и более");
         }
-        return delivery_distance;
     }
 
 
@@ -48,17 +55,15 @@ public class Main {
     /*ЧЕК-ТАЙМ*/
 
     public static void main(String[] args) {
+        int year = 2020; //под первый таск
 
-        int year = 2020;
-        String leap_year = String.valueOf(leapYear(year));//под первый таск
+        String OS = "Android";
+        int yearProduct = 2016;//под второй таск
 
-        int clientOS = 1;
-        int year_production = 2016;//под второй таск
+        int delivery_distanse = 95;//под третий таск
 
-        int delivery_distance = 95;//под третий таск
-
-        System.out.println(leap_year);
-        System.out.println(versionApplication(year_production, clientOS));
-        System.out.println(deliveryDistance(delivery_distance));
+        printLeapYear(year);
+        printVersionApp(OS, yearProduct);
+        printDelivery(delivery_distanse);
     }
 }
