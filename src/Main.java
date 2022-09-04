@@ -38,7 +38,7 @@ public class Main {
 
     /*ТРЕТИЙ ТАСК*/
 
-    private static void printDelivery(int distance) {
+    private static int printDelivery(int distance) {
         if (distance > 0 && distance < 20) {
             System.out.println("Доставка займёт сутки");
         } else if (distance >= 20 && distance < 60) {
@@ -48,6 +48,7 @@ public class Main {
         } else {
             System.out.println("Доставка займёт четверо суток и более");
         }
+        return distance;
     }
 
 
